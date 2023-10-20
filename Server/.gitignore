@@ -1,0 +1,21 @@
+# Arquivos e diretórios de build
+bin/
+obj/
+
+# Arquivos de configuração de ambiente
+appsettings.json
+appsettings.Development.json
+
+# Arquivos de configuração de IDE
+.vscode/
+.idea/
+.vs/
+
+# Arquivos e diretórios gerados automaticamente
+*.user
+*.suo
+*.sln.docstates
+
+# Logs e arquivos temporários
+*.log
+*.tmp
