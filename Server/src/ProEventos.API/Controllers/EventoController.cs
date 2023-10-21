@@ -12,13 +12,13 @@ public class EventoController : ControllerBase
 
     }
 
-    [HttpGet()]
+    [HttpGet]
     public string Get()
     {
       return "Exemplo de get";
     }
 
-    [HttpPost()]
+    [HttpPost]
     public string Post()
     {
       return "Exemplo de post";
