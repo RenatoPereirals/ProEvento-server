@@ -16,17 +16,14 @@ namespace ProEventos.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<DataContext>(context => context.UseNpgsql(Configuration.GetConnectionString("proevento-server")));
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "ProEventos.API", Version = "v1" });
             });
-            services.AddDbContext<DataContext>(options =>
-            {
-                var connectionString = Configuration.GetConnectionString("PostgreSQLConnection") ?? "DefaultConnection";
-                options.UseNpgsql(connectionString);
-            });
+           
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
