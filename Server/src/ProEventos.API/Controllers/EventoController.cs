@@ -16,12 +16,12 @@ public class EventoController : ControllerBase
   }
 
     [HttpGet]
-    public IEnumerable<Evento> Get()
+    public IEnumerable<Evento> GetAllEvents()
     {
       return _context.Eventos;
     }
 
-     [HttpGet(("{id}"))]
+    [HttpGet(("{id}"))]
     public Evento GetById(int id)
     {
       return _context.Eventos.FirstOrDefault(evento => evento.Id == id) ?? new Evento();
