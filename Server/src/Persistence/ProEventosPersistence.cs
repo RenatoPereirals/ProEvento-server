@@ -14,26 +14,26 @@ namespace Persistence
         //Geral
         public void Add<T>(T entity) where T : class
         {
-            throw new NotImplementedException();
+            _context.Add(entity);
         }
         public void Update<T>(T entity) where T : class
         {
-            throw new NotImplementedException();
+            _context.Update(entity);
         }
 
         public void Delete<T>(T entity) where T : class
         {
-            throw new NotImplementedException();
+           _context.Remove(entity);
         }
 
-        public void DeleteRange<T>(T entity) where T : class
+        public void DeleteRange<T>(T[] entityArray) where T : class
         {
-            throw new NotImplementedException();
+            _context.RemoveRange(entityArray);
         }  
 
-        public Task<bool> SaveChangesAsync()
+        public async Task<bool> SaveChangesAsync()
         {
-            throw new NotImplementedException();
+            return (await _context.SaveChangesAsync()) > 0; 
         }
 
         //Events
