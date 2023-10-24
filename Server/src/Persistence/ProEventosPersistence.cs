@@ -48,20 +48,51 @@ namespace Persistence
 
             if(includeSpeakers)
             {
-                query = query.Include(e => e.SpeakersEvents).ThenInclude(sp => sp.Speaker);
+                query = query
+                    .Include(e => e.SpeakersEvents)
+                    .ThenInclude(sp => sp.Speaker);
             }
 
             return await query.ToArrayAsync();
         }
 
-        public Task<Event[]> GetAllEventsByThemeAsync(string Theme, bool includeSpeakers)
+        public async Task<Event[]> GetAllEventsByThemeAsync(string theme, bool includeSpeakers = false)
         {
-            throw new NotImplementedException();
+           IQueryable<Event> query = _context.Events
+                .Include(e => e.TicketTiers)
+                .Include(e => e.SocialMedias);
+            
+            query = query.OrderBy(e => e.Id)
+                         .Where(e => e.Theme.ToLower()
+                         .Contains(theme.ToLower()));
+
+            if(includeSpeakers)
+            {
+                query = query
+                    .Include(e => e.SpeakersEvents)
+                    .ThenInclude(sp => sp.Speaker);
+            }
+
+            return await query.ToArrayAsync();
         }
 
-        public Task<Event> GetEventByIdAsync(int EventId, bool includeSpeakers)
+        public async Task<Event> GetEventByIdAsync(int EventId, bool includeSpeakers = false)
         {
-            throw new NotImplementedException();
+            IQueryable<Event> query = _context.Events
+                .Include(e => e.TicketTiers)
+                .Include(e => e.SocialMedias);
+            
+            query = query.OrderBy(e => e.Id)
+                         .Where(e => e.Id == EventId);
+
+            if(includeSpeakers)
+            {
+                query = query
+                    .Include(e => e.SpeakersEvents)
+                    .ThenInclude(sp => sp.Speaker);
+            }
+
+            return await query.FirstOrDefaultAsync();
         }
 
         //Speakers
