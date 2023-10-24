@@ -1,30 +1,30 @@
 using Microsoft.AspNetCore.Mvc;
-using ProEventos.API.Data;
-using ProEventos.API.Models;
+using Domain;
+using Persistence;
 
 namespace ProEventos.API.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class EventoController : ControllerBase
+public class EventController : ControllerBase
 {
-  public readonly DataContext  _context;
+  public readonly ProEventosContext  _context;
 
-  public EventoController(DataContext context)
+  public EventController(ProEventosContext context)
   {
     _context = context;
   }
 
     [HttpGet]
-    public IEnumerable<Evento> GetAllEvents()
+    public IEnumerable<Event> GetAllEvents()
     {
-      return _context.Eventos;
+      return _context.Events;
     }
 
-    [HttpGet(("{id}"))]
-    public Evento GetById(int id)
+    [HttpGet("{id}")]
+    public Event GetById(int id)
     {
-      return _context.Eventos.FirstOrDefault(evento => evento.Id == id) ?? new Evento();
+      return _context.Events.FirstOrDefault(evento => evento.Id == id) ?? new Event();
     }
 
     [HttpPost]

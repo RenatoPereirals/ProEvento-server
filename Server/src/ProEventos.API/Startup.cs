@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
-using ProEventos.API.Data;
+using Persistence;
 
 namespace ProEventos.API
 {
@@ -16,7 +16,7 @@ namespace ProEventos.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<DataContext>(context => context.UseNpgsql(Configuration.GetConnectionString("proevento-server")));
+            services.AddDbContext<ProEventosContext>(context => context.UseNpgsql(Configuration.GetConnectionString("proevento-server")));
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
