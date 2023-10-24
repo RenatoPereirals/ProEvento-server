@@ -24,7 +24,7 @@ public class EventController : ControllerBase
     [HttpGet("{id}")]
     public Event GetById(int id)
     {
-      return _context.Events.FirstOrDefault(evento => evento.Id == id) ?? new Event();
+      return _context.Events.FirstOrDefault(e => e.Id == id) ?? new Event();
     }
 
     [HttpPost]

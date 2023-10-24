@@ -45,7 +45,7 @@ namespace Persistence
                 .Include(e => e.SocialMedias);
             
             query = query.OrderBy(e => e.Id);
-
+            
             if(includeSpeakers)
             {
                 query = query
@@ -92,7 +92,7 @@ namespace Persistence
                     .ThenInclude(sp => sp.Speaker);
             }
 
-            return await query.FirstOrDefaultAsync();
+            return await query.FirstOrDefaultAsync() ?? new Event();
         }
 
         //Speakers
