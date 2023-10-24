@@ -1,4 +1,5 @@
 using Domain;
+using Microsoft.EntityFrameworkCore;
 
 namespace Persistence
 {
@@ -37,9 +38,20 @@ namespace Persistence
         }
 
         //Events
-        public Task<Event[]> GetAllEventsAsync(bool includeSpeakers)
+        public async Task<Event[]> GetAllEventsAsync(bool includeSpeakers = false)
         {
-            throw new NotImplementedException();
+            IQueryable<Event> query = _context.Events
+                .Include(e => e.TicketTiers)
+                .Include(e => e.SocialMedias);
+            
+            query = query.OrderBy(e => e.Id);
+
+            if(includeSpeakers)
+            {
+                query = query.Include(e => e.SpeakersEvents).ThenInclude(sp => sp.Speaker);
+            }
+
+            return await query.ToArrayAsync();
         }
 
         public Task<Event[]> GetAllEventsByThemeAsync(string Theme, bool includeSpeakers)

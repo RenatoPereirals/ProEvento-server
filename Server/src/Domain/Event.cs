@@ -5,15 +5,15 @@ namespace Domain
     public class Event
     {
         public int Id { get; set; }
-        public string? Local { get; set; }
+        public string Local { get; set; } = string.Empty;
         public DateTime? Date { get; set; }
         public string? Theme { get; set; }    
         public int QuantityOfPeople { get; set; }
-        public string? ImageUrl { get; set; }
-        public string? Phone { get; set; }   
-        public string? Email { get; set; }   
-        public IEnumerable<TicketTier>? TicketTiers { get; set; }
-        public IEnumerable<SocialMedia>? SocialMedias { get; set; }
-        public IEnumerable<SpeakerEvent>? SpeakersEvents { get; set; }
+        public string ImageUrl { get; set; } = string.Empty;
+        public string Phone { get; set; } = string.Empty;   
+        public string Email { get; set; } = string.Empty;   
+        public required IEnumerable<TicketTier> TicketTiers { get; set; }
+        public required IEnumerable<SocialMedia> SocialMedias { get; set; }
+        public required IEnumerable<SpeakerEvent> SpeakersEvents { get; set; }
     }
 }

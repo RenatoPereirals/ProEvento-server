@@ -2,18 +2,18 @@ using Microsoft.EntityFrameworkCore;
 using Domain;
 
 namespace Persistence;
-    public class ProEventosContext : DbContext 
+    public class ProEventosContext : DbContext
     {
         
         public ProEventosContext(DbContextOptions<ProEventosContext> options) : base(options) 
         { 
         }
 
-        public DbSet<Event>? Events { get; set; }
-        public DbSet<TicketTier>? TicketTiers { get; set; }
-        public DbSet<SocialMedia>? SocialMedias { get; set; }
-        public DbSet<Speaker>? Speakers { get; set; }
-        public DbSet<SpeakerEvent>? SpeakersEvents { get; set; }
+        public DbSet<Event> Events => Set<Event>();
+        public DbSet<TicketTier> TicketTiers => Set<TicketTier>();
+        public DbSet<SocialMedia> SocialMedias => Set<SocialMedia>();
+        public DbSet<Speaker> Speakers => Set<Speaker>();
+        public DbSet<SpeakerEvent> SpeakersEvents => Set<SpeakerEvent>();
  
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
