@@ -7,6 +7,10 @@ namespace Domain
 {
     public class Speaker
     {
+        public Speaker()
+        {
+            SpeakersEvents = new List<SpeakerEvent>();
+        }
         public int Id { get; set; }
         public string Name { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;
@@ -14,6 +18,6 @@ namespace Domain
         public string Phone { get; set; } = string.Empty;
         public string Email { get; set; } = string.Empty;
         public IEnumerable<SocialMedia>? SocialMedias { get; set; }
-        public IEnumerable<SpeakerEvent>? SpeakersEvents { get; set; }
+        public IEnumerable<SpeakerEvent> SpeakersEvents { get; set; }
     }
 }

@@ -1,10 +1,9 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace Domain
-{
+namespace Domain;
+
     public class Event
     {
-
         public Event()
         {
             SpeakersEvents = new List<SpeakerEvent>();
@@ -21,4 +20,3 @@ namespace Domain
         public IEnumerable<SocialMedia>? SocialMedias  { get; set; }
         public IEnumerable<SpeakerEvent> SpeakersEvents  { get; set; }
     }
-}
