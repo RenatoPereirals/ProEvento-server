@@ -3,7 +3,7 @@ using Domain;
 
 namespace Persistence
 {
-    public class EventPersist : IEventPersist
+    public class EventPersist : IEventPersistence
     {
         private readonly ProEventosContext _context;
         public EventPersist(ProEventosContext context)

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Persistence
 {
-    public class SpeakerPersist : ISpeakerPersist
+    public class SpeakerPersist : ISpeakerPersistence
     {
         private readonly ProEventosContext _context;
         public SpeakerPersist(ProEventosContext context)

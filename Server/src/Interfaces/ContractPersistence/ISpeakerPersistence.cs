@@ -3,7 +3,7 @@ using Domain;
 
 namespace Persistence
 {
-    public interface ISpeakerPersist
+    public interface ISpeakerPersistence
     { 
         Task<Speaker[]> GetAllSpeakersByNameAsync(string Name, bool includeEvents);
         Task<Speaker[]> GetAllSpeakersAsync(bool includeEvents);
